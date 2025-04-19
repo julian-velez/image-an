@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+    transform: perspective(1000px) rotateX(10deg);
+}
+
+.image-container img {
+    display: block;
+    width: 500px;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Pseudo-elementos para los bordes en las esquinas */
+.image-container::before,
+.image-container::after,
+.image-container span::before,
+.image-container span::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 5px solid cyan;
+    box-shadow: 0 0 15px cyan;
+    transition: 0.5s ease-in-out;
+}
+
+/* Esquinas superiores */
+.image-container::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.image-container::after {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Esquinas inferiores */
+.image-container span::before {
+    bottom: 10px;
+    left: 10px;
+    border-top: none;
+    border-right: none;
+}
+
+.image-container span::after {
+    bottom: 10px;
+    right: 10px;
+    border-top: none;
+    border-left: none;
+}
+
+/* Efecto de animación al pasar el mouse */
+.image-container:hover::before,
+.image-container:hover::after,
+.image-container:hover span::before,
+.image-container:hover span::after {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px cyan, 0 0 50px cyan;
+}
